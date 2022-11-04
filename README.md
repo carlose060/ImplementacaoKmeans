@@ -10,6 +10,7 @@ Kmeans é um algoritmo de aprendizado não supervisionado (ou seja, que não pre
   paciente/sintoma ou característica semelhante
   
   Como funciona?
+  
 1.Primeiro, preciso definir um ‘K’, ou seja, um número de clusters (ou agrupamentos).
 
 2.Depois, preciso definir, aleatoriamente, um centroide para cada cluster.
