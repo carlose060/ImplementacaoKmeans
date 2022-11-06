@@ -1,24 +1,28 @@
 class Ponto:
-    def __init__(self,x,y,z,w):
-        self.x = x
-        self.y = y
-        self.z = z
-        self.w = w
+    def __init__(self, *args):
+        self.coordenadas = []
+        if type(args[0]) == list: 
+            self.coordenadas = args[0]
+            return
+        for coordenadas in args:
+            self.coordenadas.append(coordenadas)
+
     
     def __eq__(self, other):
-        if self.x == other.x and self.y == other.y and self.z == other.z and self.w == other.w:
-            return True
-        return False
+        for coordenada1, coordenada2 in zip(self.coordenadas, other.coordenadas):
+            if coordenada1 != coordenada2:
+                return False
+        return True
         
     def __repr__(self):
-        return f'({self.x},{self.y},{self.z},{self.w})'
+        return f'{self.coordenadas}'
 
     @staticmethod
     def distancia(cls, other):
         
-    # distancia = sqrt( (xa - xb)^2 + (ya - yb)^2 ) 
-        x = pow( (cls.x - other.x) , 2)
-        y = pow( (cls.y - other.y) , 2)
-        z = pow( (cls.z - other.z) , 2)
-        w = pow( (cls.w - other.w) , 2)
-        return pow( (x + y + z + w) , 1/2)
+    # distancia = sqrt( (xa - xb)^2 + (ya - yb)^2 + ...) 
+        soma = 0
+        for cordenada1, cordenada2 in zip(cls.coordenadas, other.coordenadas):
+            soma += pow( (cordenada1 - cordenada2) , 2)
+        
+        return pow(soma, 1/2)
